@@ -12,30 +12,45 @@
 
 //question 2:
 
-int sequel(num);
+int func(int num);
 void main()
 {
 	int num;
 	printf("enter num: ");
 	scanf_s("%d", &num);
-	printf("\n sequel or not : %d", sequel(num));
+	printf("\n sequel or not : %d", func(num));
 }
-int sequel(num)
+int func(int num)
 {
-	if (num < 10)
+	if (num < 100)
 	{
-		if (num % 2 == 0)
+		if (num < 10)
 		{
-			return(1);
+			if (num % 2 == 0)
+			{
+				return(1);
+			}
+			else
+			{
+				return(0);
+			}
 		}
 		else
 		{
-			return(0);
+			int x = num % 10, y = num / 10;
+			if (x % 2 == 0 && y % 2 == 1)
+			{
+				return(1);
+			}
+			else
+			{
+				return(0);
+			}
 		}
 	}
 	else
 	{
-		if ((sequel(num % 10) - 1) % 2 == 0 && (sequel(num / 10) - 1) % 2 != 0 && (sequel(num / 100) - 1) % 2 == 0)
+		if (func(num % 100) == 1 && func(num / 100) == 1)
 		{
 			return(1);
 		}
